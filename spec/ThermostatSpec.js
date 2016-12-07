@@ -53,4 +53,19 @@ describe('Thermostat', function() {
     expect(thermostat._temperature).toEqual(20);
   });
 
+  it("should be able to tell when the energy usage is low", function() {
+    thermostat._temperature = 17;
+    expect(thermostat.energyUsage()).toEqual('low-usage');
+  });
+
+  it("should be able to tell when the energy usage is medium", function() {
+    thermostat._temperature = 24;
+    expect(thermostat.energyUsage()).toEqual('medium-usage');
+  });
+
+  it("should be able to tell when the energy usage is high", function() {
+    thermostat._temperature = 28;
+    expect(thermostat.energyUsage()).toEqual('high-usage');
+  });
+
 });
