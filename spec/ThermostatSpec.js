@@ -37,4 +37,20 @@ describe('Thermostat', function() {
     thermostat._temperature = 25;
     expect( function(){thermostat.up(); }).toThrowError('Already at maximum temperature!');
   });
+
+  it("should change the maximum temp after the power save mode was turned off", function(){
+    thermostat.turnSavePowerOff()
+    expect(thermostat._maximumTemperature).toEqual(32);
+  });
+
+  it("should change the maximum temp after the power save mode was turned off", function(){
+    thermostat.turnSavePowerOn()
+    expect(thermostat._maximumTemperature).toEqual(25);
+  });
+
+  it("should have a reset function that sets temperature at 20", function(){
+    thermostat.reset()
+    expect(thermostat._temperature).toEqual(20);
+  });
+
 });
