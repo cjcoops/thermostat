@@ -2,6 +2,7 @@ var Thermostat = function() {
   this._temperature = 20;
   this._minimumTemperature = 10;
   this._maximumTemperature = 25;
+  this._isPowerSaveOn = true
 
 };
 
@@ -21,12 +22,13 @@ Thermostat.prototype.down = function() {
 
 Thermostat.prototype.turnSavePowerOff = function() {
   this._maximumTemperature = 32;
+  this._isPowerSaveOn = false;
 
 };
 
 Thermostat.prototype.turnSavePowerOn = function() {
   this._maximumTemperature = 25;
-
+  this._isPowerSaveOn = true;
 };
 
 Thermostat.prototype.reset = function() {
