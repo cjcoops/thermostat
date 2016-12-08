@@ -52,7 +52,7 @@ describe('Thermostat', function() {
   });
 
   it("should have a reset function that sets temperature at 20", function(){
-    thermostat.reset()
+    thermostat.resetTemperature()
     expect(thermostat._temperature).toEqual(20);
   });
 
@@ -69,6 +69,13 @@ describe('Thermostat', function() {
   it("should be able to tell when the energy usage is high", function() {
     thermostat._temperature = 28;
     expect(thermostat.energyUsage()).toEqual('high-usage');
+  });
+
+  it('should change temp to 25 when power is put on', function() {
+    thermostat.turnSavePowerOff();
+    thermostat._temperature = 28;
+    thermostat.turnSavePowerOn();
+    expect(thermostat._temperature).toEqual(25);
   });
 
 });

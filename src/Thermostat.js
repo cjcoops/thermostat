@@ -29,9 +29,11 @@ Thermostat.prototype.turnSavePowerOff = function() {
 Thermostat.prototype.turnSavePowerOn = function() {
   this._maximumTemperature = 25;
   this._isPowerSaveOn = true;
+  if(this._temperature > this._maximumTemperature)
+  { this._temperature = this._maximumTemperature; }
 };
 
-Thermostat.prototype.reset = function() {
+Thermostat.prototype.resetTemperature = function() {
   this._temperature = 20;
 
 };
