@@ -46,3 +46,11 @@ Thermostat.prototype.energyUsage = function() {
   else
     {return 'high-usage';}
 };
+
+Thermostat.prototype.powerSaveStatus = function() {
+  if (this._isPowerSaveOn === true) {
+    return "On";
+  } else {
+    return "Off";
+  }
+};

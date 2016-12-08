@@ -3,7 +3,8 @@ $(document).ready(function()
   var thermostat = new Thermostat();
 
   updateTemperature();
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=0f442b2b2f3666605e59b18c9a384324&units=metric', function(data) { console.log(data.main.temp); })
+  displayWeather('London');
+  updatePowerSaveStatus();
 
   $('#up').on('click', function() {
     thermostat.up();
@@ -23,23 +24,38 @@ $(document).ready(function()
   $('#save-power-on').on('click', function() {
     thermostat.turnSavePowerOn();
     updateTemperature();
+    updatePowerSaveStatus();
   });
 
   $('#save-power-off').on('click', function() {
     thermostat.turnSavePowerOff();
     updateTemperature();
+    updatePowerSaveStatus();
   });
 
-  $('#current-city').change(function() {
+  $('#select-city').submit(function(e) {
+    e.preventDefault();
     var city = $('#current-city').val();
-    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + ',uk&appid=0f442b2b2f3666605e59b18c9a384324&units=metric', function(data) {
-      $('#current-temperature').text(data.main.temp)
-    })
+    displayWeather(city);
   })
 
   function updateTemperature() {
     $('#temperature').text(thermostat._temperature);
     $('#temperature').attr('class', thermostat.energyUsage());
+  }
+
+  function displayWeather(city) {
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
+    var token = 'uk&appid=0f442b2b2f3666605e59b18c9a384324&units=metric';
+    var units = '&units=metric';
+    $.get(url + token + units, function(data) {
+      $('#current-temperature').text(data.main.temp);
+    })
+  }
+
+  function updatePowerSaveStatus() {
+    $('#power-saving-status').text(thermostat.powerSaveStatus());
+    $('#power-saving-status').attr('class', thermostat.powerSaveStatus());
   }
 
 })
