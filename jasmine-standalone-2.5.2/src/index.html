@@ -10,24 +10,36 @@
   <body>
     <P class="special">
     <section>
+      <div class='titletemperature'>
       <h1 id="temperature"></h1>
+    </div>
+      <div class='dial'>
       <p>
+        <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
-        <button id="temperature-reset">reset</button>
-        power saving mode: <span id="power-saving-status"></span>
+      </p>
+      <p>
+        <button id="temperature-reset">Reset</button>
+      </p>
+        Power saving mode: <span id="power-saving-status"></span>
+        <p>
         <button id="powersaving-on">PSM On</button>
         <button id="powersaving-off">PSM Off</button>
-
       </p>
+      </p>
+    </div>
+    <section class='citytemperature'>
       <form id='select-city'>
         <label for="current-city">Choose city:</label>
         <input type="text" id="current-city" value='London'/>
+          <p>
         <input type="submit" value="Submit"/>
+      </p>
       </form>
 
       Current temperature: <span id="current-temperature"></span>
-
+    </section>
     </section>
   </body>
 </html>
