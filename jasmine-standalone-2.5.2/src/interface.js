@@ -1,20 +1,20 @@
 $( document ).ready(function() {
   var thermostat = new Thermostat();
-   $('#temperature').text(thermostat._temperature);
+    updateTemperature();
 
    $('#temperature-up').on('click', function () {
      thermostat.up();
-     $('#temperature').text(thermostat._temperature);
+     updateTemperature();
    })
 
    $('#temperature-down').on('click', function () {
      thermostat.down();
-     $('#temperature').text(thermostat._temperature);
+      updateTemperature();
    })
 
    $('#temperature-reset').on('click', function () {
      thermostat.reset();
-     $('#temperature').text(thermostat._temperature);
+      updateTemperature();
    })
 
    $('#powersaving-on').on('click', function () {
