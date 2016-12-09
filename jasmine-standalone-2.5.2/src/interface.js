@@ -39,5 +39,8 @@ function updateSavingMode(){
   $('#power-saving-status').attr('class', thermostat.savingModeStatus());
 }
 
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3715e27225aa632bcab610f0e65cac29&units=metric', function(data) {
+    $('#current-temperature').text(data.main.temp);
+})
 
 })
