@@ -33,6 +33,14 @@ Thermostat.prototype.savingModeOff = function() {
   return 'Off'
 }
 
+Thermostat.prototype.savingModeStatus = function() {
+  if (this._savingMode === true){
+    return 'On'
+  }else{
+    return 'Off'
+  }
+}
+
 Thermostat.prototype.reset = function(){
   this._temperature = 20;
 }

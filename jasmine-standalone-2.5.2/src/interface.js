@@ -1,6 +1,8 @@
 $( document ).ready(function() {
   var thermostat = new Thermostat();
     updateTemperature();
+    updateSavingMode();
+
 
    $('#temperature-up').on('click', function () {
      thermostat.up();
@@ -19,17 +21,23 @@ $( document ).ready(function() {
 
    $('#powersaving-on').on('click', function () {
      thermostat.savingModeOn();
-     $('#power-saving-status').text(thermostat.savingModeOn());
+     updateSavingMode();
    })
 
    $('#powersaving-off').on('click', function () {
      thermostat.savingModeOff();
-     $('#power-saving-status').text(thermostat.savingModeOff());
+     updateSavingMode();
    })
 
 function updateTemperature(){
   $('#temperature').text(thermostat._temperature);
   $('#temperature').attr('class', thermostat.energyUsage());
 }
+
+function updateSavingMode(){
+  $('#power-saving-status').text(thermostat.savingModeStatus());
+  $('#power-saving-status').attr('class', thermostat.savingModeStatus());
+}
+
 
 })
