@@ -54,3 +54,7 @@ Thermostat.prototype.powerSaveStatus = function() {
     return "Off";
   }
 };
+
+Thermostat.prototype.setTemperature = function(temp) {
+  this._temperature = temp;
+}

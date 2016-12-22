@@ -2,6 +2,13 @@ $(document).ready(function()
 {
   var thermostat = new Thermostat();
 
+  $.getJSON("http://localhost:4567/temperature.json", function(data) {
+    $('#temperature').text(data.temperature);
+    var temp = parseInt(data.temperature);
+    thermostat.setTemperature(temp);
+  })
+
+
   updateTemperature();
   displayWeather('London');
   updatePowerSaveStatus();
@@ -40,6 +47,7 @@ $(document).ready(function()
   })
 
   function updateTemperature() {
+    $.post("http://localhost:4567/temperature", { temperature: "19" })
     $('#temperature').text(thermostat._temperature);
     $('#temperature').attr('class', thermostat.energyUsage());
   }
@@ -51,6 +59,7 @@ $(document).ready(function()
     $.get(url + token + units, function(data) {
       $('#current-temperature').text(data.main.temp);
     })
+    $('#city').text(city);
   }
 
   function updatePowerSaveStatus() {
